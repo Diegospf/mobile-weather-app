@@ -20,7 +20,7 @@ export default function Location(props) {
   }
 
   return (
-    <View style={{ padding: 10, width: 200 }}>
+    <View style={{ padding: 10, width: 170 }}>
       <DropDownPicker
         items={items}
         open={isOpen}
@@ -41,6 +41,7 @@ export default function Location(props) {
         style={{
           backgroundColor: "rgba(255, 255, 255, 0.2)",
           borderRadius: 10,
+          borderWidth: 0.5,
         }}
       ></DropDownPicker>
     </View>

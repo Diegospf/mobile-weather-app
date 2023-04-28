@@ -6,6 +6,8 @@ import Location from "./src/components/Location";
 import { Ionicons } from "@expo/vector-icons";
 import { getStatusBarHeight } from "react-native-status-bar-height";
 import Precipitation from "./src/components/Precipitation";
+import Weather from "./src/components/Weather";
+import sunshineImage from "./assets/images/icon.png";
 
 export default function App() {
   const statusBarHeight = getStatusBarHeight();
@@ -30,7 +32,7 @@ export default function App() {
       wind_direction: 170,
       sunrise: "05:20 am",
       sunset: "05:15 pm",
-      condition_slug: "cloud",
+      condition_slug: "cloudly_day",
       city_name: "Natal",
       forecast: [
         {
@@ -199,11 +201,17 @@ export default function App() {
         ) : (
           <Text>Carregando...</Text>
         )}
+        <Weather
+          condition={json.results.condition_slug}
+          temperature={15}
+          minTemperature={20}
+          maxTemperature={30}
+        />
         <Precipitation
           rainChance={json.results.forecast[0].rain_probability}
           humidity={json.results.humidity}
           windSpeed={json.results.wind_speedy}
-        ></Precipitation>
+        />
         <StatusBar style="auto" />
       </View>
     </LinearGradient>
