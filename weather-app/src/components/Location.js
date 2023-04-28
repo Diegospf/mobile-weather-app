@@ -39,9 +39,10 @@ export default function Location(props) {
         )}
         showTickIcon={false}
         style={{
-          backgroundColor: "rgba(255, 255, 255, 0.2)",
+          backgroundColor: "rgba(255, 255, 255, 0.05)",
           borderRadius: 10,
           borderWidth: 0.5,
+          borderColor: 'transparent'
         }}
       ></DropDownPicker>
     </View>

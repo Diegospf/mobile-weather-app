@@ -8,6 +8,7 @@ import { getStatusBarHeight } from "react-native-status-bar-height";
 import Precipitation from "./src/components/Precipitation";
 import Weather from "./src/components/Weather";
 import sunshineImage from "./assets/images/icon.png";
+import TodayWeather from "./src/components/TodayWeather";
 
 export default function App() {
   const statusBarHeight = getStatusBarHeight();
@@ -212,6 +213,7 @@ export default function App() {
           humidity={json.results.humidity}
           windSpeed={json.results.wind_speedy}
         />
+        <TodayWeather></TodayWeather>
         <StatusBar style="auto" />
       </View>
     </LinearGradient>

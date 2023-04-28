@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     justifyContent: "space-evenly",
     backgroundColor: "rgba(0, 0, 0, 0.15)",
-    margin: 30,
+    marginHorizontal: 30,
+    marginTop: 25,
     paddingVertical: 10,
     borderRadius: 20,
   },
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 13,
     color: "white",
+    marginLeft: 3
   },
 });
 
