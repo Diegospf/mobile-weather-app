@@ -1,13 +1,182 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Location from "./src/components/Location";
 import { Ionicons } from "@expo/vector-icons";
 import { getStatusBarHeight } from "react-native-status-bar-height";
+import Precipitation from "./src/components/Precipitation";
 
 export default function App() {
   const statusBarHeight = getStatusBarHeight();
+
+  const json = {
+    by: "cid",
+    valid_key: false,
+    results: {
+      temp: 25,
+      date: "28/04/2023",
+      time: "00:16",
+      condition_code: "29",
+      description: "Parcialmente nublado",
+      currently: "noite",
+      cid: "",
+      city: "Natal, RN",
+      img_id: "29n",
+      humidity: 94,
+      cloudiness: 40.0,
+      rain: 0.0,
+      wind_speedy: "1.54 km/h",
+      wind_direction: 170,
+      sunrise: "05:20 am",
+      sunset: "05:15 pm",
+      condition_slug: "cloud",
+      city_name: "Natal",
+      forecast: [
+        {
+          date: "28/04",
+          weekday: "Sex",
+          max: 29,
+          min: 24,
+          cloudiness: 89.0,
+          rain: 15.3,
+          rain_probability: 92,
+          wind_speedy: "4.99 km/h",
+          description: "Chuva",
+          condition: "rain",
+        },
+        {
+          date: "29/04",
+          weekday: "Sáb",
+          max: 29,
+          min: 24,
+          cloudiness: 63.0,
+          rain: 8.97,
+          rain_probability: 97,
+          wind_speedy: "4.36 km/h",
+          description: "Chuva",
+          condition: "rain",
+        },
+        {
+          date: "30/04",
+          weekday: "Dom",
+          max: 28,
+          min: 24,
+          cloudiness: 93.0,
+          rain: 6.16,
+          rain_probability: 100,
+          wind_speedy: "4.55 km/h",
+          description: "Chuvas esparsas",
+          condition: "rain",
+        },
+        {
+          date: "01/05",
+          weekday: "Seg",
+          max: 29,
+          min: 24,
+          cloudiness: 94.0,
+          rain: 3.83,
+          rain_probability: 75,
+          wind_speedy: "4.52 km/h",
+          description: "Chuvas esparsas",
+          condition: "rain",
+        },
+        {
+          date: "02/05",
+          weekday: "Ter",
+          max: 29,
+          min: 23,
+          cloudiness: 29.0,
+          rain: 0.68,
+          rain_probability: 56,
+          wind_speedy: "4.17 km/h",
+          description: "Chuvas esparsas",
+          condition: "rain",
+        },
+        {
+          date: "03/05",
+          weekday: "Qua",
+          max: 29,
+          min: 24,
+          cloudiness: 15.0,
+          rain: 1.96,
+          rain_probability: 92,
+          wind_speedy: "4.64 km/h",
+          description: "Chuvas esparsas",
+          condition: "rain",
+        },
+        {
+          date: "04/05",
+          weekday: "Qui",
+          max: 29,
+          min: 24,
+          cloudiness: 27.0,
+          rain: 8.43,
+          rain_probability: 95,
+          wind_speedy: "4.34 km/h",
+          description: "Chuvas esparsas",
+          condition: "rain",
+        },
+        {
+          date: "05/05",
+          weekday: "Sex",
+          max: 29,
+          min: 24,
+          cloudiness: 49.0,
+          rain: 3.27,
+          rain_probability: 68,
+          wind_speedy: "5.11 km/h",
+          description: "Chuvas esparsas",
+          condition: "rain",
+        },
+        {
+          date: "06/05",
+          weekday: "Sáb",
+          max: 30,
+          min: 24,
+          cloudiness: 51.0,
+          rain: 2.3,
+          rain_probability: 64,
+          wind_speedy: "4.83 km/h",
+          description: "Chuvas esparsas",
+          condition: "rain",
+        },
+        {
+          date: "07/05",
+          weekday: "Dom",
+          max: 29,
+          min: 25,
+          cloudiness: 52.0,
+          rain: 3.26,
+          rain_probability: 73,
+          wind_speedy: "4.39 km/h",
+          description: "Chuvas esparsas",
+          condition: "rain",
+        },
+      ],
+      cref: "749abe",
+    },
+    execution_time: 0.0,
+    from_cache: true,
+  };
+
+  const [location, setLocation] = useState("BRXX0158");
+  const [weatherData, setWeatherData] = useState(null);
+
+  function handleLocationChange(newLocation) {
+    setLocation(newLocation);
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        `https://api.hgbrasil.com/weather/?format=json&cid=${location}`
+      );
+      const data = await response.json();
+      setWeatherData(data);
+    }
+    fetchData();
+  }, [location]);
 
   return (
     //#0B306D ##0E46AF
@@ -17,16 +186,24 @@ export default function App() {
       style={styles.container}
     >
       <View style={[styles.topBar, { marginTop: statusBarHeight }]}>
-        <View
-          style={styles.select}
-        >
+        <View style={styles.select}>
           <Ionicons name="location-outline" size={24} color="#fff" />
-          <Location></Location>
+          <Location value={location} onValueChange={handleLocationChange} />
         </View>
         <Ionicons name="notifications-outline" size={24} color="#fff" />
       </View>
       <View style={{ display: "flex", width: "100%", zIndex: 0 }}>
-        <Text>Open up App.js to start working on your app!</Text>
+        {weatherData ? (
+          //colocar todo resultado aqui
+          <View></View>
+        ) : (
+          <Text>Carregando...</Text>
+        )}
+        <Precipitation
+          rainChance={json.results.forecast[0].rain_probability}
+          humidity={json.results.humidity}
+          windSpeed={json.results.wind_speedy}
+        ></Precipitation>
         <StatusBar style="auto" />
       </View>
     </LinearGradient>
@@ -44,9 +221,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     zIndex: 1,
   },
-  select:{
+  select: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-  }
+  },
 });
