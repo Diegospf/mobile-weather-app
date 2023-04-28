@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import DropDownPicker from "react-native-dropdown-picker";
 import { Ionicons } from "@expo/vector-icons";
@@ -17,6 +17,16 @@ export default function Location(props) {
 
   function handleChange(newLocation) {
     onValueChange(newLocation);
+  }
+
+  function renderItem({ item }) {
+    return (
+      <TouchableOpacity onPress={() => handleChange(item.value)}>
+        <View style={{ padding: 10 }}>
+          <Text>{item.label}</Text>
+        </View>
+      </TouchableOpacity>
+    );
   }
 
   return (
@@ -42,9 +52,29 @@ export default function Location(props) {
           backgroundColor: "rgba(255, 255, 255, 0.05)",
           borderRadius: 10,
           borderWidth: 0.5,
-          borderColor: 'transparent'
+          borderColor: "transparent",
         }}
-      ></DropDownPicker>
+        listMode="SCROLLVIEW"
+        listItemContainerStyle={{ backgroundColor: "#fff" }}
+        listItemLabelStyle={{ color: "black", fontSize: 16 }}
+        dropDownContainerStyle={{
+          backgroundColor: "rgba(255, 255, 255, 0.05)",
+        }}
+        dropDownStyle={{
+          backgroundColor: "#fff",
+          borderRadius: 10,
+          marginTop: -1,
+        }}
+        searchable={false}
+        renderFlatList={({ style }) => (
+          <FlatList
+            data={items}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.value}
+            style={style}
+          />
+        )}
+      />
     </View>
   );
 }

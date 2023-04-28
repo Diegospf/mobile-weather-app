@@ -188,32 +188,35 @@ export default function App() {
       locations={[0.5, 1]}
       style={styles.container}
     >
-      <View style={[styles.topBar, { marginTop: statusBarHeight }]}>
-        <View style={styles.select}>
-          <Ionicons name="location-outline" size={24} color="#fff" />
-          <Location value={location} onValueChange={handleLocationChange} />
-        </View>
-        <Ionicons name="notifications-outline" size={24} color="#fff" />
-      </View>
       <View style={{ display: "flex", width: "100%", zIndex: 0 }}>
         {weatherData ? (
-          //colocar todo resultado aqui
-          <View></View>
+          <ScrollView>
+            <View style={[styles.topBar, { marginTop: statusBarHeight }]}>
+              <View style={styles.select}>
+                <Ionicons name="location-outline" size={24} color="#fff" />
+                <Location
+                  value={location}
+                  onValueChange={handleLocationChange}
+                />
+              </View>
+              <Ionicons name="notifications-outline" size={24} color="#fff" />
+            </View>
+            <Weather
+              condition={json.results.condition_slug}
+              temperature={15}
+              minTemperature={20}
+              maxTemperature={30}
+            />
+            <Precipitation
+              rainChance={json.results.forecast[0].rain_probability}
+              humidity={json.results.humidity}
+              windSpeed={json.results.wind_speedy}
+            />
+            <TodayWeather />
+          </ScrollView>
         ) : (
           <Text>Carregando...</Text>
         )}
-        <Weather
-          condition={json.results.condition_slug}
-          temperature={15}
-          minTemperature={20}
-          maxTemperature={30}
-        />
-        <Precipitation
-          rainChance={json.results.forecast[0].rain_probability}
-          humidity={json.results.humidity}
-          windSpeed={json.results.wind_speedy}
-        />
-        <TodayWeather></TodayWeather>
         <StatusBar style="auto" />
       </View>
     </LinearGradient>
