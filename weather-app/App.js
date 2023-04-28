@@ -9,6 +9,7 @@ import Precipitation from "./src/components/Precipitation";
 import Weather from "./src/components/Weather";
 import sunshineImage from "./assets/images/icon.png";
 import TodayWeather from "./src/components/TodayWeather";
+import Forecast from "./src/components/Forecast";
 
 export default function App() {
   const statusBarHeight = getStatusBarHeight();
@@ -213,6 +214,7 @@ export default function App() {
               windSpeed={json.results.wind_speedy}
             />
             <TodayWeather />
+            <Forecast forecast={json.results.forecast}></Forecast>
           </ScrollView>
         ) : (
           <Text>Carregando...</Text>
