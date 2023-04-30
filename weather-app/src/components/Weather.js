@@ -28,9 +28,10 @@ const Weather = ({
       <Image source={images[condition]} style={styles.image} />
       <View style={styles.temperatureContainer}>
         <Text style={styles.temperature}>{temperature}°</Text>
+        <Text style={styles.text}>Precipitações</Text>
         <View style={styles.minMaxTemperatureContainer}>
-          <Text style={styles.text}>Max:{minTemperature}°</Text>
-          <Text style={styles.text}>Min:{maxTemperature}°</Text>
+          <Text style={styles.text}>Max: {minTemperature}°</Text>
+          <Text style={styles.text}>Min: {maxTemperature}°</Text>
         </View>
       </View>
     </View>
@@ -52,10 +53,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   temperature: {
-    fontSize: 40,
-    fontWeight: "bold",
+    fontSize: 60,
     color: "white",
     marginLeft: 15,
+    fontFamily: "Jost-SemiBold",
   },
   minMaxTemperatureContainer: {
     display: "flex",
@@ -66,6 +67,7 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
     fontSize: 15,
+    fontFamily: "Jost-Medium",
   },
 });
 

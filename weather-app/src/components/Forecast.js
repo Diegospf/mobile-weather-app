@@ -2,6 +2,30 @@ import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
+function weekDay(day) {
+  if (day === "Seg") {
+    return "Segunda";
+  }
+  if (day === "Ter") {
+    return "Terça";
+  }
+  if (day === "Qua") {
+    return "Quarta";
+  }
+  if (day === "Qui") {
+    return "Quinta";
+  }
+  if (day === "Sex") {
+    return "Sexta";
+  }
+  if (day === "Sáb") {
+    return "Sábado";
+  }
+  if (day === "Dom") {
+    return "Domingo";
+  }
+}
+
 const Forecast = ({ forecast }) => {
   return (
     <View style={styles.container}>
@@ -11,7 +35,7 @@ const Forecast = ({ forecast }) => {
       </View>
       {forecast.slice(1, 8).map((day, index) => (
         <View key={index} style={styles.forecastRow}>
-          <Text style={styles.day}>{day.weekday}</Text>
+          <Text style={styles.day}>{weekDay(day.weekday)}</Text>
           <Image
             source={require("../../assets/images/weather/cloud.png")}
             style={styles.image}
@@ -30,7 +54,7 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 30,
     marginVertical: 20,
-    backgroundColor: "rgba(0, 0, 0, 0.15)",
+    backgroundColor: "rgba(0, 0, 50, 0.20)",
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 20,
@@ -43,7 +67,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 19,
-    fontWeight: "bold",
+    fontFamily: "Jost-Bold",
     color: "white",
   },
   forecastRow: {
@@ -54,10 +78,10 @@ const styles = StyleSheet.create({
   },
   day: {
     fontSize: 16,
-    fontWeight: "bold",
-    color:"white",
-    width: 50,
-    textAlign: "center",
+    fontFamily: "Jost-SemiBold",
+    color: "white",
+    width: 70,
+    textAlign: "left",
   },
   image: {
     width: 28,
@@ -69,12 +93,14 @@ const styles = StyleSheet.create({
   },
   temperatureMax: {
     fontSize: 14,
+    fontFamily: "Jost-Medium",
     color: "white",
     marginHorizontal: 3,
   },
   temperatureMin: {
     fontSize: 14,
-    color:  "rgba(255, 255, 255, 0.6)",
+    fontFamily: "Jost-Medium",
+    color: "rgba(255, 255, 255, 0.6)",
     marginHorizontal: 3,
   },
 });

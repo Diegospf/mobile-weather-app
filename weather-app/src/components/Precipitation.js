@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     justifyContent: "space-evenly",
-    backgroundColor: "rgba(0, 0, 0, 0.15)",
+    backgroundColor: "rgba(0, 0, 50, 0.20)",
     marginHorizontal: 30,
     marginTop: 25,
     paddingVertical: 10,
@@ -39,8 +39,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 13,
+    fontFamily: "Jost-Medium",
     color: "white",
-    marginLeft: 3
+    marginLeft: 3,
   },
 });
 

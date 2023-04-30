@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import HourWeather from './HourWeather';
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import HourWeather from "./HourWeather";
 
 const TodayWeather = () => {
   return (
@@ -23,28 +23,29 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 30,
     marginTop: 20,
-    backgroundColor: "rgba(0, 0, 0, 0.15)",
+    backgroundColor: "rgba(0, 0, 50, 0.20)",
     paddingVertical: 10,
-    paddingHorizontal:20,
+    paddingHorizontal: 20,
     borderRadius: 20,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: 10,
   },
   title: {
     fontSize: 19,
-    fontWeight: 'bold',
-    color:'white'
+    fontFamily: "Jost-Bold",
+    color: "white",
   },
   date: {
     fontSize: 17,
-    color:'white'
+    color: "white",
+    fontFamily: "Jost-Regular",
   },
   content: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 });
 

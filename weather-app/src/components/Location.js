@@ -37,8 +37,8 @@ export default function Location(props) {
         setOpen={() => setIsOpen(!isOpen)}
         setValue={handleChange}
         value={value}
-        labelStyle={{ color: "white", fontWeight: "bold", fontSize: 15 }}
-        textStyle={{ color: "black" }}
+        labelStyle={{ color: "white", fontFamily: "Jost-Bold", fontSize: 15 }}
+        textStyle={{ color: "black", fontFamily: "Jost-Medium", fontSize: 16 }}
         maxHeight={400}
         dropDownDirection="BOTTOM"
         ArrowDownIconComponent={() => (
@@ -56,7 +56,6 @@ export default function Location(props) {
         }}
         listMode="SCROLLVIEW"
         listItemContainerStyle={{ backgroundColor: "#fff" }}
-        listItemLabelStyle={{ color: "black", fontSize: 16 }}
         dropDownContainerStyle={{
           backgroundColor: "rgba(255, 255, 255, 0.05)",
         }}

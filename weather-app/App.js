@@ -10,6 +10,7 @@ import Weather from "./src/components/Weather";
 import sunshineImage from "./assets/images/icon.png";
 import TodayWeather from "./src/components/TodayWeather";
 import Forecast from "./src/components/Forecast";
+import { useFonts } from "expo-font";
 
 export default function App() {
   const statusBarHeight = getStatusBarHeight();
@@ -34,7 +35,7 @@ export default function App() {
       wind_direction: 170,
       sunrise: "05:20 am",
       sunset: "05:15 pm",
-      condition_slug: "cloudly_day",
+      condition_slug: "none_day",
       city_name: "Natal",
       forecast: [
         {
@@ -165,29 +166,63 @@ export default function App() {
   };
 
   const [location, setLocation] = useState("BRXX0158");
-  const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState("LEMBRAR DE COLOCAR NULL");
+
+  let colors = ["#30aedd", "#2ec6e9"];
+  switch (json.results.condition_slug) {
+    case "rain":
+    case "storm":
+    case "clear_night":
+    case "cloudly_night":
+    case "none_night":
+      colors = ["#0B306D", "#0E46AF"];
+      break;
+    case "clear_day":
+    case "cloudly_day":
+    case "none_day":
+      colors = ["#30aedd", "#2ec6e9"];
+      break;
+    case "hail":
+    case "snow":
+    case "fog":
+    case "cloud":
+      colors = ["#323232", "#969696"];
+      break;
+  }
+
+  let [fontsLoaded] = useFonts({
+    "Jost-SemiBold": require("./assets/fonts/Jost-SemiBold.ttf"),
+    "Jost-Regular": require("./assets/fonts/Jost-Regular.ttf"),
+    "Jost-Bold": require("./assets/fonts/Jost-Bold.ttf"),
+    "Jost-Medium": require("./assets/fonts/Jost-Medium.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   function handleLocationChange(newLocation) {
     setLocation(newLocation);
   }
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(
-        `https://api.hgbrasil.com/weather/?format=json&cid=${location}`
-      );
-      const data = await response.json();
-      setWeatherData(data);
-    }
-    fetchData();
-  }, [location]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch(
+  //       `https://api.hgbrasil.com/weather/?format=json&cid=${location}`
+  //     );
+  //     const data = await response.json();
+  //     setWeatherData(data);
+  //   }
+  //   fetchData();
+  // }, [location]);
 
   return (
-    //#0B306D ##0E46AF
     <LinearGradient
-      colors={["#30aedd", "#2ec6e9"]}
-      locations={[0.5, 1]}
+      colors={colors}
+      locations={[0, 1]}
       style={styles.container}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
     >
       <View style={{ display: "flex", width: "100%", zIndex: 0 }}>
         {weatherData ? (

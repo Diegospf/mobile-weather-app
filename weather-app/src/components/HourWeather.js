@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import React from "react";
+import { View, Text, Image, StyleSheet } from "react-native";
 
 const HourWeather = ({ temperature, image, hour }) => {
   return (
@@ -16,13 +16,14 @@ const HourWeather = ({ temperature, image, hour }) => {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   temperature: {
     fontSize: 17,
+    fontFamily: "Jost-Regular",
     marginTop: 5,
     marginBottom: 15,
-    color:'white'
+    color: "white",
   },
   image: {
     width: 45,
@@ -31,7 +32,8 @@ const styles = StyleSheet.create({
   },
   hour: {
     fontSize: 17,
-    color:'white',
+    fontFamily: "Jost-Regular",
+    color: "white",
     marginBottom: 15,
   },
 });
