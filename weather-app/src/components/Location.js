@@ -12,7 +12,6 @@ export default function Location(props) {
     { label: "Natal", value: "BRXX0158" },
     { label: "Rio de Janeiro", value: "BRXX0201" },
     { label: "Porto Alegre", value: "BRXX0186" },
-    { label: "Brasília", value: "BRXX0043" },
   ];
 
   function handleChange(newLocation) {

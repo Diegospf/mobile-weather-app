@@ -11,7 +11,12 @@ function nextHour(value) {
   return (hour + value) % 24;
 }
 
-const TodayWeather = ({ condition, images }) => {
+function nextTemp(value, temp, max) {
+  let nextTemp = (temp + value)
+  return nextTemp > max ? max : nextTemp;
+}
+
+const TodayWeather = ({ condition, temp, images, max }) => {
   const [selectedHour, setSelectedHour] = useState(0);
 
   return (
@@ -28,7 +33,7 @@ const TodayWeather = ({ condition, images }) => {
           onPress={() => setSelectedHour(0)}
         >
           <HourWeather
-            temperature="25"
+            temperature={temp}
             condition={condition}
             images={images}
             hour={`${hour.toString().padStart(2, "0")}:00`}
@@ -39,7 +44,7 @@ const TodayWeather = ({ condition, images }) => {
           onPress={() => setSelectedHour(1)}
         >
           <HourWeather
-            temperature="27"
+            temperature={nextTemp(1, temp, max)}
             condition={condition}
             images={images}
             hour={`${nextHour(1).toString().padStart(2, "0")}:00`}
@@ -50,7 +55,7 @@ const TodayWeather = ({ condition, images }) => {
           onPress={() => setSelectedHour(2)}
         >
           <HourWeather
-            temperature="28"
+            temperature={nextTemp(2, temp, max)}
             condition={condition}
             images={images}
             hour={`${nextHour(2).toString().padStart(2, "0")}:00`}
@@ -61,7 +66,7 @@ const TodayWeather = ({ condition, images }) => {
           onPress={() => setSelectedHour(3)}
         >
           <HourWeather
-            temperature="30"
+            temperature={nextTemp(3, temp, max)}
             condition={condition}
             images={images}
             hour={`${nextHour(3).toString().padStart(2, "0")}:00`}

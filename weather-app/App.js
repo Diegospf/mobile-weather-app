@@ -13,159 +13,25 @@ import { useFonts } from "expo-font";
 
 export default function App() {
   const statusBarHeight = getStatusBarHeight();
+  const json = require("./resources/mock");
+  const [location, setLocation] = useState("BRXX0195");
 
-  const json = {
-    by: "cid",
-    valid_key: false,
-    results: {
-      temp: 25,
-      date: "28/04/2023",
-      time: "00:16",
-      condition_code: "29",
-      description: "Parcialmente nublado",
-      currently: "noite",
-      cid: "",
-      city: "Natal, RN",
-      img_id: "29n",
-      humidity: 94,
-      cloudiness: 40.0,
-      rain: 0.0,
-      wind_speedy: "1.54 km/h",
-      wind_direction: 170,
-      sunrise: "05:20 am",
-      sunset: "05:15 pm",
-      condition_slug: "cloudly_day",
-      city_name: "Natal",
-      forecast: [
-        {
-          date: "28/04",
-          weekday: "Sex",
-          max: 29,
-          min: 24,
-          cloudiness: 89.0,
-          rain: 15.3,
-          rain_probability: 92,
-          wind_speedy: "4.99 km/h",
-          description: "Chuva",
-          condition: "storm",
-        },
-        {
-          date: "29/04",
-          weekday: "Sáb",
-          max: 29,
-          min: 24,
-          cloudiness: 63.0,
-          rain: 8.97,
-          rain_probability: 97,
-          wind_speedy: "4.36 km/h",
-          description: "Chuva",
-          condition: "storm",
-        },
-        {
-          date: "30/04",
-          weekday: "Dom",
-          max: 28,
-          min: 24,
-          cloudiness: 93.0,
-          rain: 6.16,
-          rain_probability: 100,
-          wind_speedy: "4.55 km/h",
-          description: "Chuvas esparsas",
-          condition: "none_day",
-        },
-        {
-          date: "01/05",
-          weekday: "Seg",
-          max: 29,
-          min: 24,
-          cloudiness: 94.0,
-          rain: 3.83,
-          rain_probability: 75,
-          wind_speedy: "4.52 km/h",
-          description: "Chuvas esparsas",
-          condition: "fog",
-        },
-        {
-          date: "02/05",
-          weekday: "Ter",
-          max: 29,
-          min: 23,
-          cloudiness: 29.0,
-          rain: 0.68,
-          rain_probability: 56,
-          wind_speedy: "4.17 km/h",
-          description: "Chuvas esparsas",
-          condition: "hail",
-        },
-        {
-          date: "03/05",
-          weekday: "Qua",
-          max: 29,
-          min: 24,
-          cloudiness: 15.0,
-          rain: 1.96,
-          rain_probability: 92,
-          wind_speedy: "4.64 km/h",
-          description: "Chuvas esparsas",
-          condition: "cloud",
-        },
-        {
-          date: "04/05",
-          weekday: "Qui",
-          max: 29,
-          min: 24,
-          cloudiness: 27.0,
-          rain: 8.43,
-          rain_probability: 95,
-          wind_speedy: "4.34 km/h",
-          description: "Chuvas esparsas",
-          condition: "cloudly_day",
-        },
-        {
-          date: "05/05",
-          weekday: "Sex",
-          max: 29,
-          min: 24,
-          cloudiness: 49.0,
-          rain: 3.27,
-          rain_probability: 68,
-          wind_speedy: "5.11 km/h",
-          description: "Chuvas esparsas",
-          condition: "rain",
-        },
-        {
-          date: "06/05",
-          weekday: "Sáb",
-          max: 30,
-          min: 24,
-          cloudiness: 51.0,
-          rain: 2.3,
-          rain_probability: 64,
-          wind_speedy: "4.83 km/h",
-          description: "Chuvas esparsas",
-          condition: "rain",
-        },
-        {
-          date: "07/05",
-          weekday: "Dom",
-          max: 29,
-          min: 25,
-          cloudiness: 52.0,
-          rain: 3.26,
-          rain_probability: 73,
-          wind_speedy: "4.39 km/h",
-          description: "Chuvas esparsas",
-          condition: "rain",
-        },
-      ],
-      cref: "749abe",
-    },
-    execution_time: 0.0,
-    from_cache: true,
-  };
-
-  const [location, setLocation] = useState("BRXX0158");
-  const [weatherData, setWeatherData] = useState("LEMBRAR DE COLOCAR NULL");
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        `https://api.hgbrasil.com/weather/?format=json&cid=${location}`
+      );
+      const data = await response.json();
+      if (data.error) {
+        setWeatherData(json.results);
+      } else {
+        setWeatherData(json.results);
+      }
+    }
+    console.log(location);
+    fetchData();
+  }, [location]);
+  const [weatherData, setWeatherData] = useState(null);
 
   const images = {
     clear_day: require("./assets/images/weather/clear_day.png"),
@@ -183,25 +49,27 @@ export default function App() {
   };
 
   let colors = ["#30aedd", "#2ec6e9"];
-  switch (json.results.condition_slug) {
-    case "rain":
-    case "storm":
-    case "clear_night":
-    case "cloudly_night":
-    case "none_night":
-      colors = ["#0B306D", "#0E46AF"];
-      break;
-    case "clear_day":
-    case "cloudly_day":
-    case "none_day":
-      colors = ["#30aedd", "#2ec6e9"];
-      break;
-    case "hail":
-    case "snow":
-    case "fog":
-    case "cloud":
-      colors = ["#323232", "#969696"];
-      break;
+  if (weatherData !== null) {
+    switch (weatherData.condition_slug) {
+      case "rain":
+      case "storm":
+      case "clear_night":
+      case "cloudly_night":
+      case "none_night":
+        colors = ["#0B306D", "#0E46AF"];
+        break;
+      case "clear_day":
+      case "cloudly_day":
+      case "none_day":
+        colors = ["#30aedd", "#2ec6e9"];
+        break;
+      case "hail":
+      case "snow":
+      case "fog":
+      case "cloud":
+        colors = ["#323232", "#969696"];
+        break;
+    }
   }
 
   let [fontsLoaded] = useFonts({
@@ -219,17 +87,6 @@ export default function App() {
     setLocation(newLocation);
   }
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch(
-  //       `https://api.hgbrasil.com/weather/?format=json&cid=${location}`
-  //     );
-  //     const data = await response.json();
-  //     setWeatherData(data);
-  //   }
-  //   fetchData();
-  // }, [location]);
-
   return (
     <LinearGradient
       colors={colors}
@@ -239,7 +96,7 @@ export default function App() {
       end={{ x: 1, y: 1 }}
     >
       <View style={{ display: "flex", width: "100%", zIndex: 0 }}>
-        {weatherData ? (
+        {weatherData && (
           <ScrollView>
             <View style={[styles.topBar, { marginTop: statusBarHeight }]}>
               <View style={styles.select}>
@@ -253,24 +110,27 @@ export default function App() {
             </View>
             <Weather
               images={images}
-              condition={json.results.condition_slug}
-              temperature={json.results.temp}
-              minTemperature={json.results.forecast[0].min}
-              maxTemperature={json.results.forecast[0].max}
+              condition={weatherData.condition_slug}
+              temperature={weatherData.temp}
+              minTemperature={weatherData.forecast[0].min}
+              maxTemperature={weatherData.forecast[0].max}
             />
             <Precipitation
-              rainChance={json.results.forecast[0].rain_probability}
-              humidity={json.results.humidity}
-              windSpeed={json.results.wind_speedy}
+              rainChance={weatherData.forecast[0].rain_probability}
+              humidity={weatherData.humidity}
+              windSpeed={weatherData.wind_speedy}
             />
-            <TodayWeather condition={json.results.condition_slug} images={images}/>
+            <TodayWeather
+              condition={weatherData.condition_slug}
+              images={images}
+              temp={weatherData.temp}
+              max={weatherData.max}
+            />
             <Forecast
-              forecast={json.results.forecast}
+              forecast={weatherData.forecast}
               images={images}
             ></Forecast>
           </ScrollView>
-        ) : (
-          <Text>Carregando...</Text>
         )}
         <StatusBar style="auto" />
       </View>
