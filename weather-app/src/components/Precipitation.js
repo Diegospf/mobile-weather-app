@@ -2,21 +2,33 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-const Precipitation = ({ rainChance, humidity, windSpeed }) => {
+const Precipitation = ({ rainChance, humidity, windSpeed, cloudiness }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.info}>
-        <Ionicons name="umbrella-outline" size={20} color="#fff" />
-        <Text style={styles.text}>{rainChance}%</Text>
-      </View>
-      <View style={styles.info}>
-        <Ionicons name="water-outline" size={20} color="#fff" />
-        <Text style={styles.text}>{humidity}%</Text>
-      </View>
-      <View style={styles.info}>
-        <Ionicons name="speedometer-outline" size={20} color="#fff" />
-        <Text style={styles.text}>{windSpeed}</Text>
-      </View>
+      {rainChance && (
+        <View style={styles.info}>
+          <Ionicons name="umbrella-outline" size={20} color="#fff" />
+          <Text style={styles.text}>{rainChance}%</Text>
+        </View>
+      )}
+      {humidity && (
+        <View style={styles.info}>
+          <Ionicons name="water-outline" size={20} color="#fff" />
+          <Text style={styles.text}>{humidity}%</Text>
+        </View>
+      )}
+      {cloudiness && (
+        <View style={styles.info}>
+          <Ionicons name="cloud-outline" size={20} color="#fff" />
+          <Text style={styles.text}>{cloudiness}%</Text>
+        </View>
+      )}
+      {windSpeed && (
+        <View style={styles.info}>
+          <Ionicons name="speedometer-outline" size={20} color="#fff" />
+          <Text style={styles.text}>{windSpeed}</Text>
+        </View>
+      )}
     </View>
   );
 };

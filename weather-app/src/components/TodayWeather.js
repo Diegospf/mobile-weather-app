@@ -1,4 +1,4 @@
-import { useState, React }  from "react";
+import { useState, React } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import HourWeather from "./HourWeather";
 
@@ -12,8 +12,7 @@ function nextHour(value) {
 }
 
 const TodayWeather = ({ condition, images }) => {
-  
-  const [selectedHour, setSelectedHour] = useState(null);
+  const [selectedHour, setSelectedHour] = useState(0);
 
   return (
     <View style={styles.container}>
@@ -24,8 +23,10 @@ const TodayWeather = ({ condition, images }) => {
         </Text>
       </View>
       <View style={styles.content}>
-        <TouchableOpacity  style={selectedHour === 0 ? styles.selectedHour : null}
-          onPress={() => setSelectedHour(0)}>
+        <TouchableOpacity
+          style={selectedHour === 0 ? styles.selectedHour : null}
+          onPress={() => setSelectedHour(0)}
+        >
           <HourWeather
             temperature="25"
             condition={condition}
@@ -33,8 +34,10 @@ const TodayWeather = ({ condition, images }) => {
             hour={`${hour.toString().padStart(2, "0")}:00`}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={selectedHour === 1 ? styles.selectedHour : null}
-          onPress={() => setSelectedHour(1)}>
+        <TouchableOpacity
+          style={selectedHour === 1 ? styles.selectedHour : null}
+          onPress={() => setSelectedHour(1)}
+        >
           <HourWeather
             temperature="27"
             condition={condition}
@@ -42,8 +45,10 @@ const TodayWeather = ({ condition, images }) => {
             hour={`${nextHour(1).toString().padStart(2, "0")}:00`}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={selectedHour === 2 ? styles.selectedHour : null}
-          onPress={() => setSelectedHour(2)}>
+        <TouchableOpacity
+          style={selectedHour === 2 ? styles.selectedHour : null}
+          onPress={() => setSelectedHour(2)}
+        >
           <HourWeather
             temperature="28"
             condition={condition}
@@ -51,8 +56,10 @@ const TodayWeather = ({ condition, images }) => {
             hour={`${nextHour(2).toString().padStart(2, "0")}:00`}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={selectedHour === 3 ? styles.selectedHour : null}
-          onPress={() => setSelectedHour(3)}>
+        <TouchableOpacity
+          style={selectedHour === 3 ? styles.selectedHour : null}
+          onPress={() => setSelectedHour(3)}
+        >
           <HourWeather
             temperature="30"
             condition={condition}
@@ -95,8 +102,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   selectedHour: {
-    backgroundColor:'rgba(0, 225, 255, 0.20)',
-    borderColor: 'rgba(0, 225, 255, 0.50)',
+    backgroundColor: "rgba(0, 225, 255, 0.20)",
+    borderColor: "rgba(0, 225, 255, 0.50)",
     borderWidth: 2,
     borderRadius: 20,
   },

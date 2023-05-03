@@ -7,17 +7,25 @@ const Weather = ({
   temperature,
   minTemperature,
   maxTemperature,
+  day,
 }) => {
-
   return (
     <View style={styles.container}>
       <Image source={images[condition]} style={styles.image} />
       <View style={styles.temperatureContainer}>
         <Text style={styles.temperature}>{temperature}°</Text>
-        <Text style={styles.text}>Precipitações</Text>
+        {day ? (
+          <Text
+            style={[styles.text, { fontFamily: "Jost-Bold", fontSize: 20 }]}
+          >
+            {day}
+          </Text>
+        ) : (
+          <Text style={styles.text}>Precipitações</Text>
+        )}
         <View style={styles.minMaxTemperatureContainer}>
-          <Text style={styles.text}>Max: {minTemperature}°</Text>
-          <Text style={styles.text}>Min: {maxTemperature}°</Text>
+          <Text style={styles.text}>Max: {maxTemperature}°</Text>
+          <Text style={styles.text}>Min: {minTemperature}°</Text>
         </View>
       </View>
     </View>
