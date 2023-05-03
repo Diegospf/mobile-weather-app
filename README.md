@@ -4,12 +4,13 @@ Este é um aplicativo de clima desenvolvido em React Native utilizando a platafo
 ## Como Instalar e Executar o Projeto React/Expo 🔨
 Para instalar e rodar o projeto Expo/React, siga os seguintes passos:
 
+* Entre na pasta *weather-app* no seu terminal, essa é a pasta do projeto.
 * Instale as dependências. Para isso, execute o comando **npm install** no diretório raiz do projeto.
-* Execute o comando **npm start** para iniciar o projeto Expo/React.
+* Execute o comando **npx expo start** para iniciar o projeto Expo/React.
 * Escaneie o código QR gerado pelo Expo com o aplicativo Expo Go em seu smartphone para visualizar o aplicativo em seu dispositivo. Ou utilize um emulador para visualizar na sua máquina.
 
 ## ⚠️Aviso sobre o Limite de Requisições⚠️
-Este aplicativo utiliza a API gratuita do OpenWeatherMap para obter as informações sobre o clima. No entanto, a API possui um limite de requisições por IP, sendo necessária uma nova rede para ter acesso as requisições. Caso este limite seja atingido, o aplicativo utilizará um mock com dados fictícios para exibir as informações.
+Este aplicativo utiliza a API gratuita da HGApi para obter as informações sobre o clima. No entanto, a API possui um limite de requisições por IP, sendo necessária uma nova rede para ter acesso as requisições. Caso este limite seja atingido, o aplicativo utilizará um mock com dados fictícios para exibir as informações.
 
 ## Prints da Interface 🖥️
 A seguir estão algumas imagens que mostram as principais telas do aplicativo de clima:
