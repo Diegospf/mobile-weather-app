@@ -6,9 +6,9 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "icon": "./assets/images/icon.png",
+    "icon": "./src/assets/images/icon.png",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./src/assets/images/splash.png",
       "resizeMode": "contain", 
       "backgroundColor":"#47A2D6"
     }

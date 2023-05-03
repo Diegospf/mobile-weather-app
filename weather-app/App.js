@@ -13,7 +13,7 @@ import { useFonts } from "expo-font";
 
 export default function App() {
   const statusBarHeight = getStatusBarHeight();
-  const json = require("./resources/mock");
+  const json = require("./src/resources/mock");
   const [location, setLocation] = useState("BRXX0195");
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function App() {
       if (data.error) {
         setWeatherData(json.results);
       } else {
-        setWeatherData(json.results);
+        setWeatherData(data.results);
       }
     }
     fetchData();
@@ -33,18 +33,18 @@ export default function App() {
   const [weatherData, setWeatherData] = useState(null);
 
   const images = {
-    clear_day: require("./assets/images/weather/clear_day.png"),
-    clear_night: require("./assets/images/weather/clear_night.png"),
-    cloud: require("./assets/images/weather/cloud.png"),
-    cloudly_day: require("./assets/images/weather/cloudly_day.png"),
-    cloudly_night: require("./assets/images/weather/cloudly_night.png"),
-    rain: require("./assets/images/weather/rain.png"),
-    storm: require("./assets/images/weather/storm.png"),
-    snow: require("./assets/images/weather/snow.png"),
-    hail: require("./assets/images/weather/hail.png"),
-    fog: require("./assets/images/weather/fog.png"),
-    none_day: require("./assets/images/weather/none_day.png"),
-    none_night: require("./assets/images/weather/none_night.png"),
+    clear_day: require("./src/assets/images/weather/clear_day.png"),
+    clear_night: require("./src/assets/images/weather/clear_night.png"),
+    cloud: require("./src/assets/images/weather/cloud.png"),
+    cloudly_day: require("./src/assets/images/weather/cloudly_day.png"),
+    cloudly_night: require("./src/assets/images/weather/cloudly_night.png"),
+    rain: require("./src/assets/images/weather/rain.png"),
+    storm: require("./src/assets/images/weather/storm.png"),
+    snow: require("./src/assets/images/weather/snow.png"),
+    hail: require("./src/assets/images/weather/hail.png"),
+    fog: require("./src/assets/images/weather/fog.png"),
+    none_day: require("./src/assets/images/weather/none_day.png"),
+    none_night: require("./src/assets/images/weather/none_night.png"),
   };
 
   let colors = ["#30aedd", "#2ec6e9"];
@@ -72,10 +72,10 @@ export default function App() {
   }
 
   let [fontsLoaded] = useFonts({
-    "Jost-SemiBold": require("./assets/fonts/Jost-SemiBold.ttf"),
-    "Jost-Regular": require("./assets/fonts/Jost-Regular.ttf"),
-    "Jost-Bold": require("./assets/fonts/Jost-Bold.ttf"),
-    "Jost-Medium": require("./assets/fonts/Jost-Medium.ttf"),
+    "Jost-SemiBold": require("./src/assets/fonts/Jost-SemiBold.ttf"),
+    "Jost-Regular": require("./src/assets/fonts/Jost-Regular.ttf"),
+    "Jost-Bold": require("./src/assets/fonts/Jost-Bold.ttf"),
+    "Jost-Medium": require("./src/assets/fonts/Jost-Medium.ttf"),
   });
 
   if (!fontsLoaded) {
