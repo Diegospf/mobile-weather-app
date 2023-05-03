@@ -28,7 +28,6 @@ export default function App() {
         setWeatherData(json.results);
       }
     }
-    console.log(location);
     fetchData();
   }, [location]);
   const [weatherData, setWeatherData] = useState(null);
