@@ -17,12 +17,14 @@ const HourWeather = ({ temperature, condition, images, hour }) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    paddingVertical:5,
+    paddingHorizontal:10,
+    marginBottom:10
   },
   temperature: {
     fontSize: 17,
     fontFamily: "Jost-Regular",
     marginTop: 5,
-    marginBottom: 15,
     color: "white",
   },
   image: {
@@ -34,7 +36,6 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontFamily: "Jost-Regular",
     color: "white",
-    marginBottom: 15,
   },
 });
 
