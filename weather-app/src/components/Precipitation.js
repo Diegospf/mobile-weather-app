@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    justifyContent: "space-evenly",
+    justifyContent: "space-around",
     backgroundColor: "rgba(0, 0, 50, 0.20)",
     marginHorizontal: 30,
     marginTop: 25,
