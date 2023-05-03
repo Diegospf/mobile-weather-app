@@ -98,21 +98,21 @@ const Forecast = ({ forecast, images }) => {
             end={{ x: 1, y: 1 }}
           >
             {selectedDay && (
-              <Weather
-                images={images}
-                condition={selectedDay.condition}
-                temperature={selectedDay.max}
-                minTemperature={selectedDay.min}
-                maxTemperature={selectedDay.max}
-                day={weekDay(selectedDay.weekday)}
-              />
-            )}
-            {selectedDay && (
-              <Precipitation
-                rainChance={selectedDay.rain_probability}
-                cloudiness={selectedDay.cloudiness}
-                windSpeed={selectedDay.wind_speedy}
-              />
+              <View>
+                <Weather
+                  images={images}
+                  condition={selectedDay.condition}
+                  temperature={selectedDay.max}
+                  minTemperature={selectedDay.min}
+                  maxTemperature={selectedDay.max}
+                  day={weekDay(selectedDay.weekday)}
+                />
+                <Precipitation
+                  rainChance={selectedDay.rain_probability}
+                  cloudiness={selectedDay.cloudiness}
+                  windSpeed={selectedDay.wind_speedy}
+                />
+              </View>
             )}
             <TouchableOpacity onPress={toggleModal} style={styles.closeButton}>
               <Ionicons name="close-outline" size={25} color="black" />
