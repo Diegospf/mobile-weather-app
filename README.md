@@ -1,37 +1,41 @@
-# Processo seletivo para desenvolvedor mobile
+# WeatherApp em React Native 🌞
+Este é um aplicativo de clima desenvolvido em React Native utilizando a plataforma Expo. O aplicativo permite que os usuários visualizem informações sobre o clima de uma determinada cidade, incluindo a temperatura atual, a previsão do tempo para os próximos dias, bem como informações sobre a umidade, velocidade do vento e outras informações.
 
-Olá,
+## Como Instalar e Executar o Projeto React/Expo 🔨
+Para instalar e rodar o projeto Expo/React, siga os seguintes passos:
 
-Estamos em busca de pessoas que gostem de tecnologia e queiram fazer parte da nossa equipe de desenvolvimento mobile! Se você é um desenvolvedor apaixonado por novas tecnologias, que gosta de trabalhar em equipe e tem vontade de aprender, então essa é a sua chance.
+* Instale as dependências. Para isso, execute o comando **npm install** no diretório raiz do projeto.
+* Execute o comando **npm start** para iniciar o projeto Expo/React.
+* Escaneie o código QR gerado pelo Expo com o aplicativo Expo Go em seu smartphone para visualizar o aplicativo em seu dispositivo. Ou utilize um emulador para visualizar na sua máquina.
 
-O processo seletivo é simples, vamos pedir que você desenvolva um aplicativo, para que possamos avaliar seu potencial. A instrução completa esta mais abaixo.
+## ⚠️Aviso sobre o Limite de Requisições⚠️
+Este aplicativo utiliza a API gratuita do OpenWeatherMap para obter as informações sobre o clima. No entanto, a API possui um limite de requisições por IP, sendo necessária uma nova rede para ter acesso as requisições. Caso este limite seja atingido, o aplicativo utilizará um mock com dados fictícios para exibir as informações.
 
-Depois dessa etapa, vamos avaliar todos os candidatos que realizarem a submissão no tempo correto, que serão convidados para uma entrevista final, com parte do nosso time, para discutir os detalhes e forma de  trabalho, basicamente para verificarmos se vai dar "_match_".
+## Prints da Interface 🖥️
+A seguir estão algumas imagens que mostram as principais telas do aplicativo de clima:
+* Splash, Início com seleção de Estado, Próximas Horas(Hoje), Próximas Previsões - Esse tema Azul Claro se refere as seguintes conditions da API: clear_day, cloudly_day, none_day.
+<p>
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/splash.jpeg" width="20%" />
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/home.jpeg" width="20%" />
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/forecast.jpeg" width="20%" />
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/selectLocation.jpeg" width="20%" />
+</p>
 
-Caso seja selecionado, você irá trabalhar em um ambiente descontraído e inovador, com profissionais de alta qualidade e muitas oportunidades de aprendizado. Além disso, terá a chance de participar do desenvolvimento de um projeto inovador na área da educação.
+* PopUp para detalhes ao clicar em algum dos Próximos Dias:
+<p>
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/popup1.jpeg" width="20%" />
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/popup2.jpeg" width="20%" />
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/popup3.jpeg" width="20%" />
+</p>
 
-E então, vamos nessa? Mostre para nós que você é o profissional que estamos procurando!
+* Tema Azul Escuro referente as seguintes conditions da API: rain, storm, clear_night, cloudly_night, none_night.
+<p>
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/BgBlue.jpeg" width="20%" />
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/BgBlueForecast.jpeg" width="20%" />
+</p>
 
-## Instruções
-
-Se você resolveu topar o desafio, vamos lá! Primeiro de tudo, faça o **fork** deste repositório. Você deverá desenvolver um aplicativo de previsão do tempo. O aplicativo pode ser desenvolvidor em [Flutter](https://flutter.dev/) ou [React-Native](https://reactnative.dev/).
-
-O resultado final deverá ser parecido com:
-
-![](images/thumbnail-figma.png)
-
-Esta tela pode ser encontrada neste [Figma Community](https://www.figma.com/community/file/1158928016905524023) criado pela [@becabelin](https://www.figma.com/@becabelin). Claro que uma ou outra coisa pode ser adaptada, mas essa adaptação depois poderá ser questionada na entrevista.
-
-Os dados podem ser consumidos da seguinte [API](https://api.hgbrasil.com/weather). Caso queira utilizar outra, escolha uma aberta e envie as intruções de uso, caso necessário.
-
-Ao fim, altere o `README.md` com instruções para instalação e execução do aplicativo.
-
-Os pontos que serão avaliados:
-
-- fidelidade com o mock
-- funcionalidade
-- organização de componentes
-- organização de commits
-- organização de código
-
-Boa sorte 🍀! Aguardamos sua submissão!
+* Tema Escuro referente as seguintes conditions da API: hail, snow, fog, cloud.
+<p>
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/bgDark.jpeg" width="20%" />
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/bgDarkForecast.jpeg" width="20%" />
+</p>
