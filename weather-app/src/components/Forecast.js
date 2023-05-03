@@ -26,7 +26,7 @@ function weekDay(day) {
   }
 }
 
-const Forecast = ({ forecast }) => {
+const Forecast = ({ forecast, images }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -37,7 +37,7 @@ const Forecast = ({ forecast }) => {
         <View key={index} style={styles.forecastRow}>
           <Text style={styles.day}>{weekDay(day.weekday)}</Text>
           <Image
-            source={require("../../assets/images/weather/cloud.png")}
+            source={images[day.condition]}
             style={styles.image}
           />
           <View style={styles.temperatures}>

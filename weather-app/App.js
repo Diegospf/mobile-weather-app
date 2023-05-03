@@ -7,7 +7,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { getStatusBarHeight } from "react-native-status-bar-height";
 import Precipitation from "./src/components/Precipitation";
 import Weather from "./src/components/Weather";
-import sunshineImage from "./assets/images/icon.png";
 import TodayWeather from "./src/components/TodayWeather";
 import Forecast from "./src/components/Forecast";
 import { useFonts } from "expo-font";
@@ -35,7 +34,7 @@ export default function App() {
       wind_direction: 170,
       sunrise: "05:20 am",
       sunset: "05:15 pm",
-      condition_slug: "none_day",
+      condition_slug: "cloudly_day",
       city_name: "Natal",
       forecast: [
         {
@@ -48,7 +47,7 @@ export default function App() {
           rain_probability: 92,
           wind_speedy: "4.99 km/h",
           description: "Chuva",
-          condition: "rain",
+          condition: "storm",
         },
         {
           date: "29/04",
@@ -60,7 +59,7 @@ export default function App() {
           rain_probability: 97,
           wind_speedy: "4.36 km/h",
           description: "Chuva",
-          condition: "rain",
+          condition: "storm",
         },
         {
           date: "30/04",
@@ -72,7 +71,7 @@ export default function App() {
           rain_probability: 100,
           wind_speedy: "4.55 km/h",
           description: "Chuvas esparsas",
-          condition: "rain",
+          condition: "none_day",
         },
         {
           date: "01/05",
@@ -84,7 +83,7 @@ export default function App() {
           rain_probability: 75,
           wind_speedy: "4.52 km/h",
           description: "Chuvas esparsas",
-          condition: "rain",
+          condition: "fog",
         },
         {
           date: "02/05",
@@ -96,7 +95,7 @@ export default function App() {
           rain_probability: 56,
           wind_speedy: "4.17 km/h",
           description: "Chuvas esparsas",
-          condition: "rain",
+          condition: "hail",
         },
         {
           date: "03/05",
@@ -108,7 +107,7 @@ export default function App() {
           rain_probability: 92,
           wind_speedy: "4.64 km/h",
           description: "Chuvas esparsas",
-          condition: "rain",
+          condition: "cloud",
         },
         {
           date: "04/05",
@@ -120,7 +119,7 @@ export default function App() {
           rain_probability: 95,
           wind_speedy: "4.34 km/h",
           description: "Chuvas esparsas",
-          condition: "rain",
+          condition: "cloudly_day",
         },
         {
           date: "05/05",
@@ -167,6 +166,21 @@ export default function App() {
 
   const [location, setLocation] = useState("BRXX0158");
   const [weatherData, setWeatherData] = useState("LEMBRAR DE COLOCAR NULL");
+
+  const images = {
+    clear_day: require("./assets/images/weather/clear_day.png"),
+    clear_night: require("./assets/images/weather/clear_night.png"),
+    cloud: require("./assets/images/weather/cloud.png"),
+    cloudly_day: require("./assets/images/weather/cloudly_day.png"),
+    cloudly_night: require("./assets/images/weather/cloudly_night.png"),
+    rain: require("./assets/images/weather/rain.png"),
+    storm: require("./assets/images/weather/storm.png"),
+    snow: require("./assets/images/weather/snow.png"),
+    hail: require("./assets/images/weather/hail.png"),
+    fog: require("./assets/images/weather/fog.png"),
+    none_day: require("./assets/images/weather/none_day.png"),
+    none_night: require("./assets/images/weather/none_night.png"),
+  };
 
   let colors = ["#30aedd", "#2ec6e9"];
   switch (json.results.condition_slug) {
@@ -238,18 +252,22 @@ export default function App() {
               <Ionicons name="notifications-outline" size={24} color="#fff" />
             </View>
             <Weather
+              images={images}
               condition={json.results.condition_slug}
-              temperature={15}
-              minTemperature={20}
-              maxTemperature={30}
+              temperature={json.results.temp}
+              minTemperature={json.results.forecast[0].min}
+              maxTemperature={json.results.forecast[0].max}
             />
             <Precipitation
               rainChance={json.results.forecast[0].rain_probability}
               humidity={json.results.humidity}
               windSpeed={json.results.wind_speedy}
             />
-            <TodayWeather />
-            <Forecast forecast={json.results.forecast}></Forecast>
+            <TodayWeather condition={json.results.condition_slug} images={images}/>
+            <Forecast
+              forecast={json.results.forecast}
+              images={images}
+            ></Forecast>
           </ScrollView>
         ) : (
           <Text>Carregando...</Text>

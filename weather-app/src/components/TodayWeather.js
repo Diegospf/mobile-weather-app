@@ -2,18 +2,27 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import HourWeather from "./HourWeather";
 
-const TodayWeather = () => {
+let now = new Date();
+let hour = now.getHours();
+let day = now.getDate().toString().padStart(2, "0");
+let month = (now.getMonth() + 1).toString().padStart(2, "0");
+
+function nextHour(value){
+  return (hour + value) % 24;
+}
+
+const TodayWeather = ({condition, images}) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Hoje</Text>
-        <Text style={styles.date}>08/05</Text>
+        <Text style={styles.date}>{day}/{month}</Text>
       </View>
       <View style={styles.content}>
-        <HourWeather temperature="25" image="sunny" hour="09:00" />
-        <HourWeather temperature="27" image="cloudy" hour="10:00" />
-        <HourWeather temperature="28" image="sunny" hour="11:00" />
-        <HourWeather temperature="30" image="rainy" hour="12:00" />
+        <HourWeather temperature="25" condition={condition} images={images} hour={`${hour.toString().padStart(2, '0')}:00`} />
+        <HourWeather temperature="27" condition={condition} images={images} hour={`${nextHour(1).toString().padStart(2, '0')}:00`} />
+        <HourWeather temperature="28" condition={condition} images={images} hour={`${nextHour(2).toString().padStart(2, '0')}:00`} />
+        <HourWeather temperature="30" condition={condition} images={images} hour={`${nextHour(3).toString().padStart(2, '0')}:00`} />
       </View>
     </View>
   );

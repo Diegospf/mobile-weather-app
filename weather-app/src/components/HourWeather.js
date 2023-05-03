@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
-const HourWeather = ({ temperature, image, hour }) => {
+const HourWeather = ({ temperature, condition, images, hour }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.temperature}>{temperature}°C</Text>
       <Image
         style={styles.image}
-        source={require("../../assets/images/weather/clear_day.png")}
+        source={images[condition]}
       />
       <Text style={styles.hour}>{hour}</Text>
     </View>
