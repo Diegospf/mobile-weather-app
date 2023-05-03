@@ -14,12 +14,16 @@ Este aplicativo utiliza a API gratuita da HGApi para obter as informações sobr
 
 ## Prints da Interface 🖥️
 A seguir estão algumas imagens que mostram as principais telas do aplicativo de clima:
-* Splash, Início com seleção de Estado, Próximas Horas(Hoje), Próximas Previsões - Esse tema Azul Claro se refere as seguintes conditions da API: clear_day, cloudly_day, none_day.
+* Splash, Início com seleção de Estado, Próximas Horas(Hoje), Próximas Previsões - Esse tema Azul Claro se refere as seguintes conditions da API: cloudly_day, clear_day, none_day.
 <p>
 <img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/splash.jpeg" width="20%" />
 <img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/home.jpeg" width="20%" />
 <img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/forecast.jpeg" width="20%" />
 <img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/selectLocation.jpeg" width="20%" />
+</p>
+<p>
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/cloud_day.jpeg" width="20%" />
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/none_day.jpeg" width="20%" />
 </p>
 
 * PopUp para detalhes ao clicar em algum dos Próximos Dias:
@@ -35,8 +39,20 @@ A seguir estão algumas imagens que mostram as principais telas do aplicativo de
 <img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/BgBlueForecast.jpeg" width="20%" />
 </p>
 
-* Tema Escuro referente as seguintes conditions da API: hail, snow, fog, cloud.
+<p>
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/stormBgBlue.jpeg" width="20%" />
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/clearBgBlue.jpeg" width="20%" />
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/cloudBgBlue.jpeg" width="20%" />
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/noneBgBlue.jpeg" width="20%" />
+</p>
+
+* Tema Escuro referente as seguintes conditions da API: cloud, snow, fog, hail.
 <p>
 <img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/bgDark.jpeg" width="20%" />
 <img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/bgDarkForecast.jpeg" width="20%" />
+</p>
+<p>
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/snowBgDark.jpeg" width="20%" />
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/fogBgDark.jpeg" width="20%" />
+<img src="https://github.com/Diegospf/mobile-weather-app/blob/main/images/hailBgDark.jpeg" width="20%" />
 </p>
